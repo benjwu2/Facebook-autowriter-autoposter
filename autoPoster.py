@@ -35,3 +35,5 @@ def writePosts(url):
         writePostContent(content)
 
 
+writePosts("http://fetchrss.com/rss/64c81e7dfe869a426a63018264c85954b4347851371a7e12.xml")
+
