@@ -20,7 +20,7 @@ def returnEntries():
             # create a dictionary for each entry and append it to the result array
             result.append(createEntryDict(entry))
     
-    print(result)
+    return result
 
 # creates a dictionary with the link and keyword/phrase for an RSS feed entry from inputFeeds.txt
 def createEntryDict(entry):
@@ -58,8 +58,8 @@ def returnArticles(feed):
 #     return {"title": article.title, "link": article.link}
 
 # returns the constructed text for the post for the inputted article object 
-def returnPostContent(article):
-    return "\n{}\n{}\n".format(article.title, article.link)
+def returnPostContent(article, hashtag):
+    return "\n{}\n{}\n\n{}\n\n".format(article.title, article.link, hashtag)
 
 # writes the output of returnPostContent to a separate txt file
 def writePostContent(content):
@@ -69,27 +69,30 @@ def writePostContent(content):
 # * This is the second-highest level function
 # constructs the text for the posts for all the news articles in the RSS corresponding to the URL inputted and writes it into
 # a separate file
-# url: the URL of the RSS feed
-def writePosts(url):
-    feed = returnFeed(url)
+# entryDictionary: a dictionary with the keywords and link stored in it, from the list of dictionaries from returnEntries
+def writePosts(entryDictionary):
+    feed = returnFeed(entryDictionary["link"])
+
+    hashtag = "#" + re.sub(r"\s", "", entryDictionary["keyword"])
     
     # write the content of a post for each article in the list
     for article in returnArticles(feed):
-        content = returnPostContent(article)
+        content = returnPostContent(article, hashtag)
         writePostContent(content)
 
 # * This is the highest level function
 # from the inputFeeds.txt file, for all the articles from all the RSS feeds listed, writes the text for a Facebook post sharing the articles
 # into postsContent.txt
 def writeAllFeedPosts():
-    feedURLs = returnFeedURLs()
+    feedList = returnEntries()
 
-    # for each feed URL, write the posts for all the articles in the feed into postsContent.txt
-    for url in feedURLs:
-        writePosts(url)
+    # for feed list entry dictionary, write the posts for all the articles in the feed into postsContent.txt
+    for entry in feedList:
+        writePosts(entry)
 
 # writeAllFeedPosts()
 test = """US mortgage
 http://fetchrss.com/rss/64c81e7dfe869a426a63018264c85954b4347851371a7e12.xml"""
 
-returnEntries()
+writeAllFeedPosts()
+
