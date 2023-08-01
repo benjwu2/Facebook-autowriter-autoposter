@@ -14,7 +14,7 @@ def returnArticles(feed):
 # def getInfo(article):
 #     return {"title": article.title, "link": article.link}
 
-# returns the constructed text that will be used to make a Facebook post for an article
+# returns the constructed text for the post for the inputted article object 
 def returnPostContent(article):
     return "\n{}\n{}\n".format(article.title, article.link)
 
@@ -23,6 +23,7 @@ def writePostContent(content):
     with open("postsContent.txt", "a") as file:
         file.write(content)
 
+# * This is the second-highest level function
 # constructs the text for the posts for all the news articles in the RSS corresponding to the URL inputted and writes it into
 # a separate file
 def writePosts(url):
@@ -31,4 +32,8 @@ def writePosts(url):
     for article in returnArticles(feed):
         content = returnPostContent(article)
         writePostContent(content)
-    
+
+
+feed1 = returnFeed("http://fetchrss.com/rss/64c81e7dfe869a426a63018264c85954b4347851371a7e12.xml")
+entry1 = feed1.entries[0]
+print(returnPostContent(entry1))
