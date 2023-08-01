@@ -3,7 +3,7 @@ import feedparser
 
 # returns a feed object for the inputted RSS URL
 def returnFeed(url):
-    pass
+    return feedparser.parse(url)
 
 # returns a news article object
 def returnArticle():
