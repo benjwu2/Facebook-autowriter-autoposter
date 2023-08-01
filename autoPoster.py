@@ -5,9 +5,9 @@ import feedparser
 def returnFeed(url):
     return feedparser.parse(url)
 
-# returns a news article object
-def returnArticle():
-    pass
+# returns a list of news article objects from an inputted feed object
+def returnArticles(feed):
+    return feed.entries
 
 # returns the link from the object for a news article
 def getLink():
@@ -18,5 +18,7 @@ def returnPostContent():
     pass
 
 # writes the constructed texts for all the news articles into a separate file
-def writePosts():
-    pass
+def writePosts(url):
+
+
+    
