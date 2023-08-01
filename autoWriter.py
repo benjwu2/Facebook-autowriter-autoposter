@@ -16,9 +16,14 @@ def returnEntries():
         # stores the list of entries
         entries = re.findall(".*\\http.*", unparsedList)
 
+# creates a dictionary with the link and keyword/phrase for an RSS feed entry from inputFeeds.txt
+def createEntryDict(entry):
+    result = {}
 
+    result["keyword"] = entry.split("\n")[0]
+    result["link"] = entry.split("\n")[1]
 
-
+    print(result)
 
 # returns a list of URLs for RSS feeds parsed from inputFeeds.txt
 def returnFeedURLs():
@@ -75,4 +80,8 @@ def writeAllFeedPosts():
     for url in feedURLs:
         writePosts(url)
 
-writeAllFeedPosts()
+# writeAllFeedPosts()
+test = """US mortgage
+http://fetchrss.com/rss/64c81e7dfe869a426a63018264c85954b4347851371a7e12.xml"""
+
+createEntryDict(test)
