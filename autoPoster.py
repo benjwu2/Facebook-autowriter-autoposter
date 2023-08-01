@@ -28,12 +28,10 @@ def writePostContent(content):
 # a separate file
 def writePosts(url):
     feed = returnFeed(url)
-        
+    
+    # write the content of a post for each article in the list
     for article in returnArticles(feed):
         content = returnPostContent(article)
         writePostContent(content)
 
 
-feed1 = returnFeed("http://fetchrss.com/rss/64c81e7dfe869a426a63018264c85954b4347851371a7e12.xml")
-entry1 = feed1.entries[0]
-writePostContent(returnPostContent(entry1))
