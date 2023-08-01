@@ -26,6 +26,7 @@ def writePostContent(content):
 # * This is the second-highest level function
 # constructs the text for the posts for all the news articles in the RSS corresponding to the URL inputted and writes it into
 # a separate file
+# url: the URL of the RSS feed
 def writePosts(url):
     feed = returnFeed(url)
     
