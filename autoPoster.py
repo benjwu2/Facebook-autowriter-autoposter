@@ -27,13 +27,8 @@ def writePostContent(content):
 # a separate file
 def writePosts(url):
     feed = returnFeed(url)
-
-    returnPostContent()
         
     for article in returnArticles(feed):
-            info = getInfo(article)
-            title = info.title
-            link = info.link
-
-            file.write(title + "\n" + text + "\n")
+        content = returnPostContent(article)
+        writePostContent(content)
     
