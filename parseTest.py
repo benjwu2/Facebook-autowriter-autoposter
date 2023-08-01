@@ -8,4 +8,8 @@ feed = feedparser.parse("http://fetchrss.com/rss/64c81e7dfe869a426a63018264c8595
 feedEntry = feed.entries[0]
 
 # lists the keys associated with each dictionary
-print(feedEntry.keys())
+itemKeys = feedEntry.keys()
+
+# prints all the keys followed by their respective value for feedEntry
+for items in itemKeys:
+    print("\n\n{}: ".format(items) + str(feedEntry[items]))
