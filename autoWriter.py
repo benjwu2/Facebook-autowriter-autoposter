@@ -13,17 +13,23 @@ def returnEntries():
         # stores the text content of inputFeeds.txt after the triple hyphens
         unparsedList = file.read().split("---")[1]
 
-        # stores the list of entries
+        # stores the list of entries regex'd from the text content of inputFeeds.txt
         entries = re.findall(".*\\http.*", unparsedList)
+
+        for entry in entries:
+            # create a dictionary for each entry and append it to the result array
+            result.append(createEntryDict(entry))
 
 # creates a dictionary with the link and keyword/phrase for an RSS feed entry from inputFeeds.txt
 def createEntryDict(entry):
     result = {}
 
+    # the keyword is on the first line
+    # the link is on the second after the line break
     result["keyword"] = entry.split("\n")[0]
     result["link"] = entry.split("\n")[1]
 
-    print(result)
+    return result
 
 # returns a list of URLs for RSS feeds parsed from inputFeeds.txt
 def returnFeedURLs():
