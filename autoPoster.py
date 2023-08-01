@@ -18,17 +18,19 @@ def returnArticles(feed):
 def returnPostContent(article):
     return "\n{}\n{}\n".format(article.title, article.link)
 
-
+# writes the output of returnPostContent to a separate txt file
+def writePostContent(content):
+    with open("postsContent.txt", "a") as file:
+        file.write(content)
 
 # constructs the text for the posts for all the news articles in the RSS corresponding to the URL inputted and writes it into
 # a separate file
 def writePosts(url):
     feed = returnFeed(url)
 
-    with open("postsContent.txt", "a") as file:
-        returnPostContent()
+    returnPostContent()
         
-        for article in returnArticles(feed):
+    for article in returnArticles(feed):
             info = getInfo(article)
             title = info.title
             link = info.link
