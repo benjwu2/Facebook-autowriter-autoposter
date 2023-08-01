@@ -14,11 +14,13 @@ def returnEntries():
         unparsedList = file.read().split("---")[1]
 
         # stores the list of entries regex'd from the text content of inputFeeds.txt
-        entries = re.findall(".*\\http.*", unparsedList)
+        entries = re.findall(r".*\shttp.*", unparsedList)
 
         for entry in entries:
             # create a dictionary for each entry and append it to the result array
             result.append(createEntryDict(entry))
+    
+    print(result)
 
 # creates a dictionary with the link and keyword/phrase for an RSS feed entry from inputFeeds.txt
 def createEntryDict(entry):
@@ -90,4 +92,4 @@ def writeAllFeedPosts():
 test = """US mortgage
 http://fetchrss.com/rss/64c81e7dfe869a426a63018264c85954b4347851371a7e12.xml"""
 
-createEntryDict(test)
+returnEntries()
