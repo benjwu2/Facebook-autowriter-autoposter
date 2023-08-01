@@ -9,9 +9,10 @@ def returnFeed(url):
 def returnArticles(feed):
     return feed.entries
 
+#! deprecated
 # returns a dictionary containig the title and link from the object for an inputted news article object
-def getInfo(article):
-    return {"title": article.title, "link": article.link}
+# def getInfo(article):
+#     return {"title": article.title, "link": article.link}
 
 # returns the constructed text that will be used to make a Facebook post for an article
 def returnPostContent(article):
