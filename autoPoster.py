@@ -14,12 +14,23 @@ def getInfo(article):
     return {"title": article.title, "link": article.link}
 
 # returns the constructed text that will be used to make a Facebook post for an article
-def returnPostContent():
-    pass
+def returnPostContent(article):
+    return "\n{}\n{}\n".format(article.title, article.link)
 
-# writes the constructed texts for all the news articles into a separate file
+
+
+# constructs the text for the posts for all the news articles in the RSS corresponding to the URL inputted and writes it into
+# a separate file
 def writePosts(url):
     feed = returnFeed(url)
 
+    with open("postsContent.txt", "a") as file:
+        returnPostContent()
+        
+        for article in returnArticles(feed):
+            info = getInfo(article)
+            title = info.title
+            link = info.link
 
+            file.write(title + "\n" + text + "\n")
     
