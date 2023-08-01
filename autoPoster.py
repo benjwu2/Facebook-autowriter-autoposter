@@ -46,5 +46,13 @@ def writePosts(url):
         content = returnPostContent(article)
         writePostContent(content)
 
+# * This is the highest level function
+# from the inputFeeds.txt file, for all the articles from all the RSS feeds listed, writes the text for a Facebook post sharing the articles
+# into postsContent.txt
+def writeAllFeedPosts():
+    feedURLs = returnFeedURLs()
 
-print(returnFeedURLs())
+    # for each feed URL, write the posts for all the articles in the feed into postsContent.txt
+    for url in feedURLs:
+        writePosts(url)
+
