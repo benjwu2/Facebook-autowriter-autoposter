@@ -5,7 +5,7 @@ import re
 # * and writes the title and link for all the articles from all the listed feeds into postsContent.txt
 
 # constructs a list of dictionaries containing the keyword/phrase describing the feed in the entry
-# and the link
+# and the link from the list of entries in inputFeeds.txt
 def returnEntries():
     with open("inputFeeds.txt", "r") as file:
         result = []
