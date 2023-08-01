@@ -56,3 +56,4 @@ def writeAllFeedPosts():
     for url in feedURLs:
         writePosts(url)
 
+writeAllFeedPosts()
