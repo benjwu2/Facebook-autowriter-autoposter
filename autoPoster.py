@@ -36,4 +36,4 @@ def writePosts(url):
 
 feed1 = returnFeed("http://fetchrss.com/rss/64c81e7dfe869a426a63018264c85954b4347851371a7e12.xml")
 entry1 = feed1.entries[0]
-print(returnPostContent(entry1))
+writePostContent(returnPostContent(entry1))
