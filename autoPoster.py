@@ -1,4 +1,5 @@
 import feedparser
+import re
 
 # returns a list of URLs for RSS feeds parsed from inputFeeds.txt
 def returnFeedURLs():
@@ -7,18 +8,9 @@ def returnFeedURLs():
 
         # stores the text content of inputFeeds.txt after the triple hyphens
         unparsedList = file.read().split("---")[1]
-
-        # stores the individual entries in a list
-        entries = unparsedList.split("\n")
-
-        for entry in entries:
-            result.append(returnURL(entry))
         
-        return result
+        return re.findall("http.*", unparsedList)
 
-# returs the URL of an RSS feed entry in inputFeeds.txt
-def returnURL(entry):
-    return entry.split("\n")[2]
 
 # returns a feed object for the inputted RSS URL
 def returnFeed(url):
@@ -55,5 +47,4 @@ def writePosts(url):
         writePostContent(content)
 
 
-writePosts("http://fetchrss.com/rss/64c81e7dfe869a426a63018264c85954b4347851371a7e12.xml")
-
+print(returnFeedURLs())
