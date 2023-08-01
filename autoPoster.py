@@ -3,12 +3,22 @@ import feedparser
 # returns a list of URLs for RSS feeds parsed from inputFeeds.txt
 def returnFeedURLs():
     with open("inputFeeds.txt", "r") as file:
+        result = []
+
         # stores the text content of inputFeeds.txt after the triple hyphens
         unparsedList = file.read().split("---")[1]
 
         # stores the individual entries in a list
         entries = unparsedList.split("\n")
 
+        for entry in entries:
+            result.append(returnURL(entry))
+        
+        return result
+
+# returs the URL of an RSS feed entry in inputFeeds.txt
+def returnURL(entry):
+    return entry.split("\n")[2]
 
 # returns a feed object for the inputted RSS URL
 def returnFeed(url):
