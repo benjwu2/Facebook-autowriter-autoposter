@@ -4,8 +4,8 @@ import re
 # * This script runs the function writeAllFeedPosts(), which takes the list of RSS feeds in inputFeeds.txt,  
 # * and writes the title and link for all the articles from all the listed feeds into postsContent.txt
 
-# constructs a list of dictionaries containing the keyword/phrase describing the RSS feed in the entry
-# and the link from the list of entries in inputFeeds.txt
+# parses inputFeeds.txt, then constructs and returns a list of dictionaries for each RSS feed entry 
+# containing a descriptive keyword/phrase and the link for the RSS feed
 def returnEntries():
     with open("inputFeeds.txt", "r") as file:
         result = []
@@ -17,7 +17,7 @@ def returnEntries():
         entries = re.findall(r".*\shttp.*", unparsedList)
 
         for entry in entries:
-            # create a dictionary for each entry and append it to the result array
+            # create a dictionary for each RSS feed entry and append it to the result array
             result.append(createEntryDict(entry))
     
     return result
