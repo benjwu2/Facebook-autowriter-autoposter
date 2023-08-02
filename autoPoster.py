@@ -19,9 +19,11 @@ def filterPosts(posts):
     for index, item in enumPosts:
         pass
 
-def containsBannedWord(title):
+# checks if a post has a banned word in it
+# returns True if yes, False if no
+def containsBannedWord(post):
     for word in bannedWords:
-        if re.search(word, title):
+        if re.search(word, post):
             return True
     return False
 
