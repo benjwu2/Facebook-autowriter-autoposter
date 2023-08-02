@@ -1,0 +1,15 @@
+For each RSS feed: 
+Write a phrase or keyword describing the content of the RSS feed, then paste the URL for the RSS feed on
+the line below. Separate each entry by a line break
+
+For example:
+US mortgage
+http://fetchrss.com/rss/64c81e7dfe869a426a63018264c85954b4347851371a7e12.xml
+
+Write the entries below the hyphens
+---
+US mortgage
+http://fetchrss.com/rss/64c81e7dfe869a426a63018264c85954b4347851371a7e12.xml
+
+real estate
+http://fetchrss.com/rss/64c81e7dfe869a426a63018264c8ea3391d57e25d839b802.xml
