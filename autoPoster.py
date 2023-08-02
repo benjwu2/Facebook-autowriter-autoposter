@@ -14,10 +14,20 @@ def getPosts():
         result = content.split("\n\n\n")
         return result
 
+# iterates through an enumerated version of the inputted list of post contents
+# and replaces the replaces element vaues in the inputted list that have banned words with an empty string
+# posts: an inputted list of post contents
 def filterPosts(posts):
     enumPosts = enumerate(posts)
+
+    # for each post content...
     for index, item in enumPosts:
-        pass
+        # ...replaces the corresponding element in the inputted
+        # list with a blank string if a banned word is found
+        if containsBannedWord(item):
+            posts[index] = ""
+    
+    return posts
 
 # checks if a post has a banned word in it
 # returns True if yes, False if no
@@ -35,4 +45,7 @@ def post():
         payload = {"message": post, "token": config["pageAccessToken"]}
         r = requests.post(pageURL, data=payload)
 
-print(containsBannedWord("Real estate agent fined over $15000 for drinking milk at seller's home"))
+testList = ["Real estate agent fined over $15000 for drinking milk at seller's home",
+            "Plunging sales of new homes show China�s real estate crisis isn�t over - CNN",
+            "Grant Cardone Says Real Estate �Is a Better Investment Today Than It Was 2 Years Ago�: Here�s Why - Yahoo Finance"]
+
