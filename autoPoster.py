@@ -49,3 +49,4 @@ testList = ["Real estate agent fined over $15000 for drinking milk at seller's h
             "Plunging sales of new homes show China�s real estate crisis isn�t over - CNN",
             "Grant Cardone Says Real Estate �Is a Better Investment Today Than It Was 2 Years Ago�: Here�s Why - Yahoo Finance"]
 
+print(filterPosts(testList))
