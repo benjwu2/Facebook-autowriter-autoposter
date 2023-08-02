@@ -21,7 +21,7 @@ def filterPosts(posts):
 
 def containsBannedWord(title):
     for word in bannedWords:
-        if re.search(title, word):
+        if re.search(word, title):
             return True
     return False
 
@@ -33,3 +33,4 @@ def post():
         payload = {"message": post, "token": config["pageAccessToken"]}
         r = requests.post(pageURL, data=payload)
 
+print(containsBannedWord("Real estate agent fined over $15000 for drinking milk at seller's home"))
