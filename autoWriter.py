@@ -59,7 +59,7 @@ def returnArticles(feed):
 
 # returns the constructed text for the post for the inputted article object 
 def returnPostContent(article, hashtag):
-    return "\n{}\n{}\n\n{}\n\n".format(article.title, article.link, hashtag)
+    return "{}\n{}\n\n{}\n\n\n".format(article.title, article.link, hashtag)
 
 # writes the output of returnPostContent to a separate txt file
 def writePostContent(content):
