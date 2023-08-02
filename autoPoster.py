@@ -1,6 +1,8 @@
 import requests
 import configFile
+import re
 config = getattr(configFile, "config")
+bannedWords = getattr(configFile, "bannedWords")
 
 pageURL = 'https://graph.facebook.com/{}/feed'.format(config["pageID"])
 
@@ -12,7 +14,16 @@ def getPosts():
         result = content.split("\n\n\n")
         return result
 
+def filterPosts(posts):
+    enumPosts = enumerate(posts)
+    for index, item in enumPosts:
+        pass
 
+def containsBannedWord(title):
+    for word in bannedWords:
+        if re.search(title, word):
+            return True
+    return False
 
 # for each post in the list returned by getPosts, make a Facebook post
 def post():
@@ -21,3 +32,4 @@ def post():
         # see configFile.py to edit the value of confi["pageAccessToken"]
         payload = {"message": post, "token": config["pageAccessToken"]}
         r = requests.post(pageURL, data=payload)
+
